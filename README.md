@@ -1,1 +1,1 @@
-# calculadora_delphi
+# Calculadora simples em Delphi
