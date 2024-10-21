@@ -24,7 +24,7 @@ type
     procedure btDividirClick(Sender: TObject);
   private
     { Private declarations }
-    procedure calcularResultado(operacao: String);
+    function calcularResultado(num1, num2: Real; operacao: String): Real;
   public
     { Public declarations }
   end;
@@ -38,48 +38,45 @@ implementation
 
 procedure TForm1.btDividirClick(Sender: TObject);
 begin
-   if txtNum2.Text = '0' then
-    ShowMessage('Impossível dividir por zero')
-   else
-   calcularResultado('dividir');
+  if txtNum2.Text = '0' then
+    ShowMessage('Impossível dividir por zero!')
+  else
+  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'dividir'));
 end;
 
 procedure TForm1.btMultiplicarClick(Sender: TObject);
 begin
-  calcularResultado('multiplicar');
+  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'multiplicar'));
 end;
 
 procedure TForm1.btSomarClick(Sender: TObject);
 begin
-  calcularResultado('somar');
+  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'somar'));
 end;
 
 procedure TForm1.btSubtrairClick(Sender: TObject);
 begin
-  calcularResultado('subtrair');
+  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'subtrair'));
 end;
 
-procedure TForm1.calcularResultado(operacao: String);
+function TForm1.calcularResultado(num1, num2: Real; operacao: String): Real;
 var
-   num1, num2, resultado: Real;
+  resultado: Real;
 begin
-   resultado := 0;
-   num1 := StrToFloat(txtNum1.Text);
-   num2 := StrToFloat(txtNum2.Text);
 
-   if operacao = 'somar' then
-      resultado := num1 + num2;
+  if operacao = 'somar' then
+    resultado:= num1 + num2;
 
-   if operacao = 'subtrair' then
-      resultado := num1 - num2;
+  if operacao = 'subtrair' then
+    resultado:= num1 - num2;
 
-   if operacao = 'multiplicar' then
-      resultado := num1 * num2;
+  if operacao = 'multiplicar' then
+    resultado:= num1 * num2;
 
-   if operacao = 'dividir' then
-      resultado := num1 / num2;
+  if operacao = 'dividir' then
+    resultado:= num1 / num2;
 
-   txtResultado.Text := FloatToStr(resultado);
+  Result := resultado;
 end;
 
 end.
