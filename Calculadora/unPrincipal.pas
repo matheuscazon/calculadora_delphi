@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Styles, Vcl.Themes;
 
 type
   TForm1 = class(TForm)
@@ -18,10 +18,12 @@ type
     btDividir: TButton;
     Label3: TLabel;
     txtResultado: TEdit;
+    opcVisual: TRadioGroup;
     procedure btSomarClick(Sender: TObject);
     procedure btSubtrairClick(Sender: TObject);
     procedure btMultiplicarClick(Sender: TObject);
     procedure btDividirClick(Sender: TObject);
+    procedure opcVisualClick(Sender: TObject);
   private
     { Private declarations }
     function calcularResultado(num1, num2: Real; operacao: String): Real;
@@ -77,6 +79,16 @@ begin
     resultado:= num1 / num2;
 
   Result := resultado;
+end;
+
+procedure TForm1.opcVisualClick(Sender: TObject);
+begin
+    case opcVisual.ItemIndex of
+       0: TStyleManager.SetStyle('Windows');
+       1: TStyleManager.SetStyle('Glow');
+       2: TStyleManager.SetStyle('Aqua Light Slate');
+    end;
+
 end;
 
 end.
