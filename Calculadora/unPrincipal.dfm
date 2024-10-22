@@ -4,7 +4,7 @@ object Form1: TForm1
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Calculadora'
-  ClientHeight = 407
+  ClientHeight = 405
   ClientWidth = 247
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -98,7 +98,7 @@ object Form1: TForm1
     Width = 166
     Height = 121
     Caption = 'alterar o Visual da Calculadora'
-    ItemIndex = 1
+    ItemIndex = 0
     Items.Strings = (
       'Windows Classic'
       'Glow'

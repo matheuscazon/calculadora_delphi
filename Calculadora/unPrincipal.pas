@@ -65,6 +65,7 @@ function TForm1.calcularResultado(num1, num2: Real; operacao: String): Real;
 var
   resultado: Real;
 begin
+  resultado := 0;
 
   if operacao = 'somar' then
     resultado:= num1 + num2;
