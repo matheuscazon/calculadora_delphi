@@ -41,6 +41,7 @@ object Form1: TForm1
     Width = 166
     Height = 23
     TabOrder = 0
+    OnChange = txtNum1Change
   end
   object txtNum2: TEdit
     Left = 32
@@ -48,6 +49,7 @@ object Form1: TForm1
     Width = 166
     Height = 23
     TabOrder = 1
+    OnChange = txtNum1Change
   end
   object btSomar: TButton
     Left = 32
@@ -55,6 +57,7 @@ object Form1: TForm1
     Width = 37
     Height = 33
     Caption = '+'
+    Enabled = False
     TabOrder = 2
     OnClick = btSomarClick
   end
@@ -64,6 +67,7 @@ object Form1: TForm1
     Width = 37
     Height = 33
     Caption = '-'
+    Enabled = False
     TabOrder = 3
     OnClick = btSubtrairClick
   end
@@ -73,6 +77,7 @@ object Form1: TForm1
     Width = 37
     Height = 33
     Caption = '*'
+    Enabled = False
     TabOrder = 4
     OnClick = btMultiplicarClick
   end
@@ -82,6 +87,7 @@ object Form1: TForm1
     Width = 37
     Height = 33
     Caption = '/'
+    Enabled = False
     TabOrder = 5
     OnClick = btDividirClick
   end
@@ -90,6 +96,7 @@ object Form1: TForm1
     Top = 229
     Width = 166
     Height = 23
+    ReadOnly = True
     TabOrder = 6
   end
   object opcVisual: TRadioGroup

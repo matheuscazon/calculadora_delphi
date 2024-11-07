@@ -24,9 +24,12 @@ type
     procedure btMultiplicarClick(Sender: TObject);
     procedure btDividirClick(Sender: TObject);
     procedure opcVisualClick(Sender: TObject);
+    procedure txtNum1Change(Sender: TObject);
   private
     { Private declarations }
     function calcularResultado(num1, num2: Real; operacao: String): Real;
+    function validarCampos(): Boolean;
+    procedure habilitarBotoes(habilitado: Boolean);
   public
     { Public declarations }
   end;
@@ -40,25 +43,31 @@ implementation
 
 procedure TForm1.btDividirClick(Sender: TObject);
 begin
-  if txtNum2.Text = '0' then
-    ShowMessage('Impossível dividir por zero!')
-  else
-  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'dividir'));
+  if validarCampos then
+    begin
+      if txtNum2.Text = '0' then
+        ShowMessage('Impossível dividir por zero!')
+      else
+      txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'dividir'));
+    end;
 end;
 
 procedure TForm1.btMultiplicarClick(Sender: TObject);
 begin
-  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'multiplicar'));
+  if validarCampos then
+    txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'multiplicar'));
 end;
 
 procedure TForm1.btSomarClick(Sender: TObject);
 begin
-  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'somar'));
+  if validarCampos then
+    txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'somar'));
 end;
 
 procedure TForm1.btSubtrairClick(Sender: TObject);
 begin
-  txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'subtrair'));
+  if validarCampos then
+    txtResultado.Text := FloatToStr(calcularResultado(StrToFloat(txtNum1.Text), StrToFloat(txtNum2.Text), 'subtrair'));
 end;
 
 function TForm1.calcularResultado(num1, num2: Real; operacao: String): Real;
@@ -82,6 +91,14 @@ begin
   Result := resultado;
 end;
 
+procedure TForm1.habilitarBotoes(habilitado: Boolean);
+begin
+    btSomar.Enabled := habilitado;
+    btSubtrair.Enabled := habilitado;
+    btMultiplicar.Enabled := habilitado;
+    btDividir.Enabled := habilitado;
+end;
+
 procedure TForm1.opcVisualClick(Sender: TObject);
 begin
     case opcVisual.ItemIndex of
@@ -90,6 +107,28 @@ begin
        2: TStyleManager.SetStyle('Aqua Light Slate');
     end;
 
+end;
+
+procedure TForm1.txtNum1Change(Sender: TObject);
+begin
+  if validarCampos then
+    habilitarBotoes(True)
+  else
+    habilitarBotoes(False)
+end;
+
+function TForm1.validarCampos: Boolean;
+begin
+  if (txtNum1.Text = '') or (txtNum2.Text = '') then
+    Result := False
+  else
+    try
+
+    except
+
+    end;
+
+    Result := True;
 end;
 
 end.
