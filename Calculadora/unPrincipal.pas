@@ -123,12 +123,16 @@ begin
     Result := False
   else
     try
+      StrToFloat(txtNum1.Text);
+      StrToFloat(txtNum2.Text);
 
+      Result := True;
     except
-
+      on E: EConvertError do
+        begin
+          Result := False;
+        end;
     end;
-
-    Result := True;
 end;
 
 end.
